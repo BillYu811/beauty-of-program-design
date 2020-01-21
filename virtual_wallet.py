@@ -1,7 +1,7 @@
 from decimal import Decimal, isdecimal
-# 钱包数据代码,主要提供对wallet的一个标准正常普通的CURD接口
+# 钱包数据层代码,主要提供对wallet的一个标准正常普通的CURD接口
 import walletRepo
-# 交易数据代码,提供记录交易信息的接口
+# 交易数据层代码,提供记录交易信息的接口
 import transactionRepo
 # 一个交易数据的模型
 import transactionEntity
@@ -49,7 +49,7 @@ class VirtualWalletServer(object):
         _transactionId = transactionRepo.saveTransaction(transaction.getTransaction())
         try:
             _fromWallet.debit(amount)
-            _toWallet.debit(amount)
+            _toWallet.credit(amount)
         except InsufficientBalanceException:
             # 余额不足代码
             transactionRepo.updateStatus(_transactionId, transaction.CLOSE)
@@ -57,7 +57,7 @@ class VirtualWalletServer(object):
             # 其他错误
             transactionRepo.updateStatus(_transactionId, transaction.FAILED)
         else:
-            # 没有出现错误则更新余额
+            # 没有出现错误则向数据层更新余额
             walletRepo.updateBalance(fromWalletId, _fromWallet.getBalance())
             walletRepo.updateBalance(toWalletId, _toWallet.getBalance())
         finally:
