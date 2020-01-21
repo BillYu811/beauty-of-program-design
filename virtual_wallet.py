@@ -1,5 +1,5 @@
 from decimal import Decimal, isdecimal
-# 钱包数据层代码,主要提供对wallet的一个标准正常普通的CURD接口
+# 钱包数据层代码,主要提供操作钱包余额，获得钱包信息的接口
 import walletRepo
 # 交易数据层代码,提供记录交易信息的接口
 import transactionRepo
