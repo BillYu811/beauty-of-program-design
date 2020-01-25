@@ -93,7 +93,9 @@ class DefaultApiAuthenticator():
 
 if __name__ == '__main__':
     Url = 'http://api.billyu.cn/auth?id=123&appid=abc&token=xxx&ts={}'.format(int(time.time()))
+    # throw runtimeError
     DefaultApiAuthenticator().auth(Url)
     Url = 'http://api.billyu.cn/auth?id=123&appid=abc&token' \
           '=5721a6183dfbc0e5b699da8b27e1fb709448a16575ebfa4901f0d481961ed7ed&ts={}'.format(int(time.time()))
+    # pass
     DefaultApiAuthenticator().auth(Url)
