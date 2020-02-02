@@ -1,0 +1,10 @@
+day8-9
+
+KISS,Keep It Simple and Stupid.
+个人的理解用最简单的方法解决复杂的问题。不要重复造轮子，不要用一些花里胡哨的技巧。
+
+YAGNI. You Ain't Gonna Need it.
+不必去写当前用不到的代码，引入一些不需要的库等等。
+
+DRY, Don't Repeat Yourself
+善用封装继承多态和依赖注入，同时做好封装和模块化，来提高代码可复用性，而不是重复的写一些写过的代码。
